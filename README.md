@@ -5,7 +5,7 @@ Overview
 
 [Validate.io](https://github.com/validate-io) is a collection of JavaScript utilities for value validation.
 
-In contrast to statically typed languages, such as C/C++, Java, and others, JavaScript is dynamically typed, which means that data types are assigned to values, not variables. Accordingly, value validation in JavaScript must occur at runtime when variables are dynamically assigned to values. For example,
+In contrast to statically typed languages, such as C/C++, Java, and others, JavaScript is dynamically typed, which means that data types are assigned to values, not variables. Accordingly, value validation in JavaScript must occur at runtime when variables are dynamically assigned to values. For example, consider
 
 ``` c
 int square(int x)
@@ -51,17 +51,17 @@ JavaScript value validation is nothing new. Often in client applications, method
 
 Validation is not as common in server-side applications and libraries. Often times, server-side libraries exposing public methods do not type check input arguments. Instead, library developers leave it to the consumer to ensure her use conforms to available documentation and method internals. One reason cited for omitting input argument validation is that validation makes code less compact (longer files) and that consumers should be responsible for ensuring their code plays nice with API (i.e., read the code).
 
-This practice, however, has questionable value for the following reasons. First, including input validation is a form of documentation. Second, validation more clearly defines expectations. Third, validation helps prevent library authors from introducing subtle bugs in their code, especially when playing fast and loose with truthiness and falsiness. Fourth, throwing errors when validation requirements are not met allows consumers to fail fast. And accordingly, validation enables consumers to more easily debug library interfacing code.
-
 > Input validation helps both library developers and consumers.
 
-While not commonly used, server-side validation libraries do exist, such as the relatively popular [validator](https://www.npmjs.org/package/validator) module. The problem with almost all of these libraries is that the are __all-or-nothing__. For instance, suppose you want to use the [underscore](http://underscorejs.org/#isObject) method to validate a value is an object. To do so, you cannot easily extract and use that one method; you must download and load the entire library. Such requirements lead to code bloat and often attempts to wrangle a library into providing a piece of functionality for a particular use case.
+This practice, however, has questionable value for the following reasons. First, including input validation is a form of documentation. Second, validation more clearly defines expectations. Third, validation helps prevent library authors from introducing subtle bugs in their code, especially when playing fast and loose with truthiness and falsiness. Fourth, throwing errors when validation requirements are not met allows consumers to fail fast. And accordingly, validation enables consumers to more easily debug library interfacing code.
+
+While not commonly used, server-side validation libraries do exist, such as the relatively popular [validator](https://www.npmjs.org/package/validator) module. The problem with almost all of these libraries is that they are __all-or-nothing__. For instance, suppose you want to use the [underscore](http://underscorejs.org/#isObject) method to validate that a value is an object. To do so, you cannot easily extract and use that one method; you must download and load the entire library. Such requirements lead to code bloat and attempts to wrangle a library into providing a piece of functionality for a particular use case.
 
 Additionally, while some libraries attempt to be monolithic repositories for validation, others are so specialized to not be generally useful. And even if one attempted to compose a larger library from several smaller ones, the differences in code style and approach (method chaining, callbacks, argument order, etc) would lead to a franken-mess.
 
 > Do one thing and do one thing well.
 
-Validate.io attempts to address these problems by providing small modular components, each exposing consistent interface and style, which may be arbitrarily combined into whatever validation library is demanded of your validation. You only need a validation library which type checks [`objects`](https://github.com/validate-io/object), [`strings`](https://github.com/validate-io/string), [`arrays`](https://github.com/validate-io/array), and [`timestamps`](https://github.com/validate-io/timestamp), then easily roll your own library requiring only those components. If you want an all-encompassing validation library, then just use the Validate.io [validator](https://github.com/validate-io/validator), which contains all validation modules and provides a consistent rule-based interface to input argument validation. If you would prefer to use method-chaining, then simply implement a method-chaining interface ontop of the individual components.
+[Validate.io](https://github.com/validate-io) attempts to address these problems by providing small modular components, each exposing consistent interface and style, which may be arbitrarily combined into whatever validation library is demanded of your validation. If you only need a validation library which type checks [`objects`](https://github.com/validate-io/object), [`strings`](https://github.com/validate-io/string), [`arrays`](https://github.com/validate-io/array), and [`timestamps`](https://github.com/validate-io/timestamp), then easily roll your own library requiring only those components. If you want an all-encompassing validation library, then just use the Validate.io [validator](https://github.com/validate-io/validator), which contains all validation modules and provides a consistent rule-based interface to input argument validation. If you would prefer to use method-chaining, then simply implement a method-chaining interface across the individual components.
 
 > Complexity in composition.
 
@@ -75,6 +75,6 @@ function isString( value ) {
 
 complexity arises in their composition. By modularizing individual components into distinct autonomous units, we alleviate the burden of implementing each method from scratch and instead shift the focus to abstraction layers bringing the components together. Hence, we embrace flexilibity while ensuring a consistent and well-tested foundation.
 
-Validate.io is a work-in-progress. Certainly feel free to offer suggestions and join the organization if you want to contribute more fully. Any contributions should abide by the rules set forth in the [contributing guide](https://github.com/validate-io/contributing).
+[Validate.io](https://github.com/validate-io) is a work-in-progress. Certainly feel free to offer suggestions and join the organization if you want to contribute more fully. Any contributions should abide by the rules set forth in the [contributing guide](https://github.com/validate-io/contributing).
 
 
